@@ -2,3 +2,5 @@ Flask
 yt-dlp
 pydub
 ffmpeg-python
+
+gunicorn    
