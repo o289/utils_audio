@@ -47,7 +47,7 @@ def cut_audio(input_path, output_path, start, end):
     print("✂️ ffmpegで音声を切り出し中...")
 
     command = [
-        "ffmpeg",
+        "./bin/ffmpeg",
         "-y",
         "-ss", start,
         "-to", end,
