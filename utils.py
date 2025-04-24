@@ -6,8 +6,14 @@ from yt_dlp import YoutubeDL
 TMP_DIR = "./tmp"
 os.makedirs(TMP_DIR, exist_ok=True)
 
+COOKIE_FILE = "cookies/www.youtube.com_cookies.txt"
+
 def get_video_info(url):
-    ydl_opts = {'quiet': True}
+    ydl_opts = {
+        'quiet': True,
+        'cookiefile': COOKIE_FILE,
+        'ignoreerrors': True
+        }
     with YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=False)
         return info
@@ -27,6 +33,8 @@ def download_audio(url):
         }],
         'noplaylist': True,
         'quiet': False,
+        'cookiefile': COOKIE_FILE,
+        'ignoreerrors': True
     }
 
     with YoutubeDL(ydl_opts) as ydl:
@@ -39,7 +47,7 @@ def cut_audio(input_path, output_path, start, end):
     print("✂️ ffmpegで音声を切り出し中...")
 
     command = [
-        "./bin/ffmpeg",
+        "ffmpeg",
         "-y",
         "-ss", start,
         "-to", end,
