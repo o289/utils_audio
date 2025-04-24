@@ -12,7 +12,8 @@ def get_video_info(url):
     ydl_opts = {
         'quiet': True,
         'cookiefile': COOKIE_FILE,
-        'ignoreerrors': True
+        'ignoreerrors': True,
+        'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
         }
     with YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=False)
@@ -34,7 +35,8 @@ def download_audio(url):
         'noplaylist': True,
         'quiet': False,
         'cookiefile': COOKIE_FILE,
-        'ignoreerrors': True
+        'ignoreerrors': True,
+        'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
     }
 
     with YoutubeDL(ydl_opts) as ydl:
